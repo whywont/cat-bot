@@ -73,7 +73,6 @@ A state vector is computed per frame, combining:
 - 3 Conv layers: 16, 32, 64 filters
 - GlobalAvgPooling, Dense(64), Dropout(30%)
 - Input: Cropped 128x128 image patches
-- Accuracy: ~81% (Doja), ~76% (Harlow)
 
 ### Decision Transformer
 - Input: [batch, 2, 14] state vector sequence
@@ -83,7 +82,7 @@ A state vector is computed per frame, combining:
 
 ---
 
-## Decision Transformer Controlled Demo
+## Decision Transformer Controlled Agent Demonstration
 
 ![Demo](demo/decision_transformer_demo.gif)
 
