@@ -1,0 +1,6 @@
+names:
+  0: Doja
+  1: Harlow
+path: /home/awilson/auto_cat/auto_dataset
+train: images
+val: images

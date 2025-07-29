@@ -1,0 +1,1 @@
+The original project required over a hundred images of each cat for satisfactory detection, due to privacy reasons only one photo per profile has been uploaded.

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catbot Remote Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    
+    .control-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+      max-width: 300px;
+      margin: 30px auto;
+    }
+    
+    .control-btn {
+      padding: 25px;
+      font-size: 28px;
+      font-weight: bold;
+      border: 3px solid #333;
+      background: #fff;
+      border-radius: 15px;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      transition: all 0.1s;
+    }
+    
+    .control-btn:active {
+      background: #007bff;
+      color: white;
+      transform: scale(0.95);
+    }
+    
+    .empty { 
+      visibility: hidden; 
+    }
+    
+    .status {
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Catbot Remote Keyboard</h1>
+  <p>Use W / A / S / D / X to control the robot.</p>
+  
+  <div class="control-grid">
+    <div class="empty"></div>
+    <button class="control-btn" onclick="sendCommand('w')">W</button>
+    <div class="empty"></div>
+    
+    <button class="control-btn" onclick="sendCommand('a')">A</button>
+    <button class="control-btn" onclick="sendCommand('s')">S</button>
+    <button class="control-btn" onclick="sendCommand('d')">D</button>
+    
+    <div class="empty"></div>
+    <button class="control-btn" onclick="sendCommand('x')">X</button>
+    <div class="empty"></div>
+  </div>
+  
+  <div class="status" id="status">Ready</div>
+
+  <script>
+    const keyMap = {
+      'w': 'f',
+      'a': 'l',
+      's': 'b',
+      'd': 'r',
+      'x': 's'
+    };
+    
+    const status = document.getElementById('status');
+    
+    function sendCommand(key) {
+      fetch(`/move/${keyMap[key]}`)
+        .then(res => res.text())
+        .then(msg => {
+          console.log("Sent:", msg);
+          status.textContent = `Command: ${key.toUpperCase()} ? ${msg}`;
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          status.textContent = `Error sending: ${key.toUpperCase()}`;
+        });
+    }
+  </script>
+</body>
+</html>
