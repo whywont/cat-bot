@@ -66,7 +66,7 @@ class ExpertDemonstrationDataset(Dataset):
     
     def _analyze_sequence_diversity(self):
         """Analyze the diversity in our sequences."""
-        print("\n📊 SEQUENCE ANALYSIS:")
+        print("\nSEQUENCE ANALYSIS:")
         print("-" * 50)
         
         # Action pattern analysis
