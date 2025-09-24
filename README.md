@@ -29,7 +29,7 @@ The system is designed to enrich pet environments by acting as an interactive, r
 |----------------------|-------------|
 | **Rule-Based System** | Heuristics based on spatial metrics (e.g., bounding box size) to shape behavior or assign rewards. |
 | **Expert Demonstration** | Manual control through a Flask web interface to generate high-quality training data. |
-| **Decision Transformer** | Transformer model trained on expert traces to learn sequential decision-making. |
+| **Transformer** | Transformer model trained on expert traces to learn sequential decision-making. |
 
 A state vector is computed per frame, combining:
 - Object detection results
@@ -74,7 +74,7 @@ A state vector is computed per frame, combining:
 - GlobalAvgPooling, Dense(64), Dropout(30%)
 - Input: Cropped 128x128 image patches
 
-### Decision Transformer
+### Transformer
 - Input: [batch, 2, 14] state vector sequence
 - Output: Next action (stop, forward, back, left, right)
 - Trained with behavioral cloning on expert demonstration
@@ -82,7 +82,7 @@ A state vector is computed per frame, combining:
 
 ---
 
-## Decision Transformer Controlled Agent Demonstration
+## Transformer Controlled Agent Demonstration
 
 ![Demo](demo/decision_transformer_demo.gif)
 
